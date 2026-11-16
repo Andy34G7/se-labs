@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lab 3: Component Modelling & Architectural Pattern Selection</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+@page {
+    size: A4;
+    margin: 12mm 12mm 12mm 12mm;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: #000000;
+    background-color: #ffffff;
+    line-height: 1.5;
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #000000;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #000000;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    page-break-after: avoid;
+}
+
+h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #000000;
+    margin-top: 16px;
+    margin-bottom: 6px;
+    page-break-after: avoid;
+}
+
+h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #000000;
+    margin-top: 12px;
+    margin-bottom: 4px;
+    page-break-after: avoid;
+}
+
+p {
+    margin-top: 4px;
+    margin-bottom: 8px;
+    color: #000000;
+}
+
+ul {
+    list-style-type: disc;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    padding-left: 22px;
+    color: #000000;
+}
+
+ol {
+    list-style-type: decimal;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    padding-left: 22px;
+    color: #000000;
+}
+
+ul ul {
+    list-style-type: circle;
+    margin-top: 2px;
+    margin-bottom: 4px;
+    padding-left: 18px;
+}
+
+ol ol, ul ol, ol ul {
+    margin-top: 2px;
+    margin-bottom: 4px;
+    padding-left: 18px;
+}
+
+li {
+    margin-bottom: 3px;
+    color: #000000;
+    line-height: 1.45;
+}
+
+li p {
+    margin: 0;
+    display: inline;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 11px;
+    page-break-inside: auto;
+    table-layout: fixed;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+}
+
+th {
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: 700;
+    text-align: left;
+    padding: 6px 8px;
+    border: 1px solid #000000;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+td {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 6px 8px;
+    border: 1px solid #000000;
+    vertical-align: top;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #000000;
+    margin: 16px 0;
+}
+
+code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 11px;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 1px 3px;
+    border: 1px solid #cccccc;
+    border-radius: 2px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+pre {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 8px;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    overflow-x: auto;
+    font-size: 11px;
+    line-height: 1.4;
+    page-break-inside: avoid;
+    word-break: break-word;
+    white-space: pre-wrap;
+}
+
+pre code {
+    background-color: transparent;
+    color: #000000;
+    border: none;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #000000;
+    margin: 10px 0;
+    page-break-inside: avoid;
+}
+
+blockquote {
+    border-left: 3px solid #000000;
+    padding-left: 10px;
+    margin: 10px 0;
+    color: #000000;
+    background-color: #ffffff;
+}
+
+a {
+    color: #000000;
+    text-decoration: underline;
+}
+
+</style>
+</head>
+<body>
+<h1 id="lab-3-component-modelling-architectural-pattern-selection">Lab 3: Component Modelling &amp; Architectural Pattern Selection</h1>
+<ul>
+<li><strong>Course</strong>: UE24CS341A – Software Engineering</li>
+<li><strong>Student Name</strong>: Andey Hemanth</li>
+<li><strong>SRN</strong>: PES2UG24CS061</li>
+<li><strong>Assigned Problem Statement</strong>: Problem Statement 57: Pet Adoption and Shelter Management System</li>
+</ul>
+<hr />
+<h2 id="1-executive-summary-problem-context">1. Executive Summary &amp; Problem Context</h2>
+<p>The <strong>Pet Adoption and Shelter Management System (Problem Statement 57)</strong> is a specialized domain platform engineered to manage the end-to-end operational lifecycle of rescued animals. The system handles medical intake logging, public pet discovery, prospective adopter questionnaire evaluation, automated screening, and foster home placement scheduling with automated reminder workflows.</p>
+<h3 id="11-context-from-lab-1-and-lab-2">1.1 Context from Lab 1 and Lab 2</h3>
+<p>This architectural specification directly builds upon the requirements engineering and Agile backlog established in previous labs:</p>
+<ul>
+<li>
+<p><strong>Lab 1 Requirements</strong>:</p>
+<ul>
+<li><strong>FR-001</strong>: Animal vaccination and medical intake recording.</li>
+<li><strong>FR-002</strong>: Adoption questionnaire submission by prospective adopters.</li>
+<li><strong>FR-003</strong>: Automated questionnaire screening against shelter eligibility rules within 5 seconds.</li>
+<li><strong>FR-004</strong>: Foster placement timeline scheduling (start dates, check-ins, return dates).</li>
+<li><strong>FR-005</strong>: Foster placement milestone email reminders delivered 48 hours in advance.</li>
+<li><strong>NFR-001</strong>: Pet catalog search latency &lt; 200 ms under 500 concurrent users.</li>
+<li><strong>NFR-002</strong>: AES-256 encryption at rest for all stored applicant questionnaires and medical records.</li>
+</ul>
+</li>
+<li>
+<p><strong>Lab 2 Agile Backlog</strong>:</p>
+<ul>
+<li><strong>Epic 1 (<code>SCRUM-5</code>)</strong>: Animal Medical Intake &amp; Status Management (<code>SCRUM-8</code>, <code>SCRUM-9</code>).</li>
+<li><strong>Epic 2 (<code>SCRUM-6</code>)</strong>: Adopter Application &amp; Eligibility Screening (<code>SCRUM-10</code>, <code>SCRUM-11</code>).</li>
+<li><strong>Epic 3 (<code>SCRUM-7</code>)</strong>: Foster Placement &amp; Milestone Tracking (<code>SCRUM-12</code>, <code>SCRUM-13</code>).</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="2-architectural-style-comparative-evaluation">2. Architectural Style Comparative Evaluation</h2>
+<p>To determine the most suitable software architecture for the Pet Adoption and Shelter Management System, three candidate architectural patterns were evaluated: <strong>Layered (3-Tier) Architecture</strong>, <strong>Microservices Architecture</strong>, and <strong>Client-Server Architecture</strong>.</p>
+<h3 id="21-architectural-comparison-matrix">2.1 Architectural Comparison Matrix</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Evaluation Dimension</th>
+<th style="text-align: left;">Layered (3-Tier) Architecture</th>
+<th style="text-align: left;">Microservices Architecture</th>
+<th style="text-align: left;">Client-Server Architecture</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Separation of Concerns</strong></td>
+<td style="text-align: left;"><strong>High</strong>: Strict horizontal separation across Presentation, Business Logic, and Data Persistence layers.</td>
+<td style="text-align: left;"><strong>High</strong>: Service-boundary modularity organized around domain subdomains.</td>
+<td style="text-align: left;"><strong>Low to Moderate</strong>: Business logic frequently bleeds into client or database stored procedures.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Data Consistency &amp; Transactions</strong></td>
+<td style="text-align: left;"><strong>High (ACID)</strong>: Centralized database ensures strict relational integrity and ACID transactions across medical clearance and adoption status.</td>
+<td style="text-align: left;"><strong>Low to Moderate (BASE)</strong>: Requires complex distributed sagas, two-phase commits, or eventual consistency across services.</td>
+<td style="text-align: left;"><strong>High (ACID)</strong>: Centralized database with direct connection pools.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Operational &amp; Deployment Complexity</strong></td>
+<td style="text-align: left;"><strong>Low</strong>: Monolithic or multi-tier deployment on unified infrastructure; straightforward CI/CD pipelines.</td>
+<td style="text-align: left;"><strong>Very High</strong>: Requires service meshes, distributed tracing, container orchestration (Kubernetes), and multi-repo CI/CD.</td>
+<td style="text-align: left;"><strong>Very Low</strong>: Simple two-tier deployment; hard to manage version compatibility across client apps.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Security &amp; Privacy Enforcement (NFR-002)</strong></td>
+<td style="text-align: left;"><strong>High</strong>: Centralized Data Access Layer uniformly enforces AES-256 encryption at rest and strict Role-Based Access Control (RBAC).</td>
+<td style="text-align: left;"><strong>Moderate</strong>: Requires securing every inter-service gRPC/REST endpoint and managing distributed secrets/keys.</td>
+<td style="text-align: left;"><strong>Low to Moderate</strong>: Direct client-to-server or DB access increases attack surface and perimeter exposure.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Performance &amp; Latency (NFR-001)</strong></td>
+<td style="text-align: left;"><strong>High</strong>: In-memory caching (Redis) in the Application Tier easily delivers sub-200ms query times without network hop overhead.</td>
+<td style="text-align: left;"><strong>Moderate</strong>: Network serialization and inter-service latency can degrade composite search performance.</td>
+<td style="text-align: left;"><strong>Moderate</strong>: Server load spikes quickly degrade response times for public catalog queries.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Development &amp; Team Velocity</strong></td>
+<td style="text-align: left;"><strong>Optimal for Medium Teams</strong>: Single coherent codebase with well-defined service boundaries and low overhead.</td>
+<td style="text-align: left;"><strong>High for Large Teams</strong>: Overkill for shelter scale; excessive infrastructure management overhead.</td>
+<td style="text-align: left;"><strong>Fast Initial, Poor Long-term</strong>: Quick prototype setup but prone to tight coupling.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-architecture-selection-technical-justification">3. Architecture Selection &amp; Technical Justification</h2>
+<blockquote>
+<p><strong>Architectural Selection Declaration</strong>:<br />
+<strong>"I chose Layered (3-Tier) Architecture for the Pet Adoption and Shelter Management System."</strong></p>
+</blockquote>
+<p>The <strong>Layered Architecture</strong> organizes the system into three primary horizontal tiers:</p>
+<ol>
+<li><strong>Presentation Layer (Client Tier)</strong>: Handles UI rendering, input sanitization, and RESTful API client requests.</li>
+<li><strong>Business Logic Layer (Application Tier)</strong>: Implements domain workflows, eligibility screening algorithms, medical clearance verifications, and foster timeline validations.</li>
+<li><strong>Data Access &amp; Persistence Layer (Database Tier)</strong>: Manages ORM entities, connection pooling, and transparent AES-256 encrypted database persistence.</li>
+</ol>
+<h3 id="31-concrete-technical-justifications">3.1 Concrete Technical Justifications</h3>
+<h4 id="1-scenario-reason-1-strict-separation-of-public-discovery-and-privileged-shelter-operations-with-strong-acid-consistency">1. Scenario Reason 1: Strict Separation of Public Discovery and Privileged Shelter Operations with Strong ACID Consistency</h4>
+<p>The shelter workflow has two fundamentally different operational profiles:</p>
+<ul>
+<li>Public applicants browse available pets (<code>FR-002</code>, <code>NFR-001</code>) and submit applications.</li>
+<li>Shelter staff and medical volunteers perform privileged intakes, administer vaccines, update quarantine statuses (<code>FR-001</code>), and lock animals into foster timelines (<code>FR-004</code>).</li>
+</ul>
+<p>An animal cannot be marked <em>Ready for Adoption</em> or assigned to an adopter while undergoing medical quarantine or an active foster placement. The <strong>Layered Architecture</strong> provides atomic transaction boundaries within the Business Logic Tier, ensuring that medical clearance, questionnaire review, and status transitions occur under strict ACID guarantees without the failure modes or eventual consistency anomalies of distributed microservices.</p>
+<h4 id="2-scenario-reason-2-operational-simplicity-and-high-maintainability-for-shelter-scale">2. Scenario Reason 2: Operational Simplicity and High Maintainability for Shelter Scale</h4>
+<p>Animal shelters and rescue organizations operate with focused development teams and limited infrastructure budgets. A Microservices architecture introduces massive operational overhead (service meshes, distributed logging, network partition handling, and polyglot persistence). The <strong>Layered Architecture</strong> achieves clean modular encapsulation via well-defined internal component interfaces while keeping deployment, monitoring, and database management centralized, reliable, and cost-effective.</p>
+<h4 id="3-security-advantage-centralized-aes-256-encryption-at-rest-and-strict-rbac-enforcement-nfr-002">3. Security Advantage: Centralized AES-256 Encryption at Rest and Strict RBAC Enforcement (NFR-002)</h4>
+<p>Adoption applications contain highly sensitive Personally Identifiable Information (PII) such as applicant home addresses, family details, income brackets, and landlord permissions (<code>FR-002</code>), while medical records contain confidential veterinary logs (<code>FR-001</code>). In this Layered Architecture:</p>
+<ul>
+<li>All database read/write operations must pass through the <strong>Shelter Database &amp; Data Access Component</strong>.</li>
+<li>The Data Access Layer enforces transparent <strong>AES-256 column-level encryption</strong> for applicant PII and medical histories prior to disk persistence.</li>
+<li>Role-Based Access Control (RBAC) is enforced at the business layer gateway, ensuring public applicants can never query quarantine records or other applicants' screening data.</li>
+</ul>
+<h4 id="4-performance-benefit-sub-200ms-catalog-search-via-layer-integrated-in-memory-caching-nfr-001">4. Performance Benefit: Sub-200ms Catalog Search via Layer-Integrated In-Memory Caching (NFR-001)</h4>
+<p>To satisfy Non-Functional Requirement <strong>NFR-001</strong> (returning search results in &lt; 200 ms under 500 concurrent users), the <strong>Pet Catalog &amp; Search Component</strong> in the Application Tier incorporates an in-memory caching mechanism (e.g., Redis / Local Cache). Public search queries for available pets are served directly from cache memory in under 20 ms, bypassing database disk I/O. Write operations (medical status updates, adoptions) invalidate relevant cache keys atomically through internal service events.</p>
+<hr />
+<h2 id="4-component-identification-specifications">4. Component Identification &amp; Specifications</h2>
+<p>The system is decomposed into <strong>7 modular components</strong> across the three architectural layers. Each component encapsulates specific business logic, hides internal data structures, and communicates exclusively through explicit provided and required interfaces.</p>
+<h3 id="41-component-catalog-table">4.1 Component Catalog Table</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Component Name</th>
+<th style="text-align: left;">Layer / Stereotype</th>
+<th style="text-align: left;">Provided Interfaces</th>
+<th style="text-align: left;">Required Interfaces</th>
+<th style="text-align: left;">Core Responsibilities &amp; Lab Mapping</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong><code>Public Web Portal</code></strong></td>
+<td style="text-align: left;">Presentation (<code>&lt;&lt;component&gt;&gt;</code>)</td>
+<td style="text-align: left;"><em>None (UI Client)</em></td>
+<td style="text-align: left;"><code>IPetSearchService</code>, <code>IQuestionnaireService</code></td>
+<td style="text-align: left;">Renders public responsive UI for adopters; captures filter criteria and submits questionnaires.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>Shelter Staff &amp; Foster Portal</code></strong></td>
+<td style="text-align: left;">Presentation (<code>&lt;&lt;component&gt;&gt;</code>)</td>
+<td style="text-align: left;"><em>None (Staff UI)</em></td>
+<td style="text-align: left;"><code>IMedicalRecordService</code>, <code>IFosterPlacementService</code></td>
+<td style="text-align: left;">Renders administrative dashboards for medical logging, quarantine tracking, and foster timeline scheduling.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>Pet Catalog &amp; Search Component</code></strong></td>
+<td style="text-align: left;">Business (<code>&lt;&lt;component&gt;&gt;</code>)</td>
+<td style="text-align: left;"><code>IPetSearchService</code></td>
+<td style="text-align: left;"><code>IShelterDataAccess</code></td>
+<td style="text-align: left;">Filters available pets by breed, age, and size; caches catalog data to fulfill NFR-001 (&lt; 200 ms).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>Adoption &amp; Questionnaire Manager Component</code></strong></td>
+<td style="text-align: left;">Business (<code>&lt;&lt;component&gt;&gt;</code>)</td>
+<td style="text-align: left;"><code>IQuestionnaireService</code></td>
+<td style="text-align: left;"><code>IScreeningEngine</code>, <code>IHealthClearance</code>, <code>INotificationDispatch</code></td>
+<td style="text-align: left;">Manages applicant questionnaire workflows, application tracking IDs, and state transitions (FR-002, SCRUM-10).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>Automated Screening Engine</code></strong></td>
+<td style="text-align: left;">Business (<code>&lt;&lt;component&gt;&gt;</code>)</td>
+<td style="text-align: left;"><code>IScreeningEngine</code></td>
+<td style="text-align: left;"><code>IShelterDataAccess</code></td>
+<td style="text-align: left;">Executes rule-based eligibility checks (&lt; 5s), evaluates housing/pet policies, flags disqualifications (FR-003, SCRUM-11).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>Medical Intake &amp; Vaccination Component</code></strong></td>
+<td style="text-align: left;">Business (<code>&lt;&lt;component&gt;&gt;</code>)</td>
+<td style="text-align: left;"><code>IMedicalRecordService</code>, <code>IHealthClearance</code></td>
+<td style="text-align: left;"><code>IShelterDataAccess</code></td>
+<td style="text-align: left;">Records vaccine logs, tracks medical history, enforces quarantine hold, updates adoption readiness (FR-001, SCRUM-8, SCRUM-9).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>Foster Placement &amp; Scheduler Component</code></strong></td>
+<td style="text-align: left;">Business (<code>&lt;&lt;component&gt;&gt;</code>)</td>
+<td style="text-align: left;"><code>IFosterPlacementService</code></td>
+<td style="text-align: left;"><code>INotificationDispatch</code>, <code>IShelterDataAccess</code></td>
+<td style="text-align: left;">Manages foster schedules, prevents overlapping bookings, tracks milestone check-in dates (FR-004, SCRUM-12).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>Notification Dispatcher Component</code></strong></td>
+<td style="text-align: left;">Business (<code>&lt;&lt;component&gt;&gt;</code>)</td>
+<td style="text-align: left;"><code>INotificationDispatch</code></td>
+<td style="text-align: left;"><code>ISMTPClient</code></td>
+<td style="text-align: left;">Formats email templates, schedules automated 48-hour milestone reminders, and dispatches via SMTP (FR-005, SCRUM-13).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>Shelter Database &amp; Data Access Component</code></strong></td>
+<td style="text-align: left;">Data (<code>&lt;&lt;component&gt;&gt;</code>)</td>
+<td style="text-align: left;"><code>IShelterDataAccess</code></td>
+<td style="text-align: left;"><em>None (Direct DB / ORM)</em></td>
+<td style="text-align: left;">Centralized persistence layer with ORM mapping, connection pooling, and AES-256 encryption at rest (NFR-002).</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-interface-specifications-communication-protocols">5. Interface Specifications &amp; Communication Protocols</h2>
+<p>In accordance with UML component modelling standards, components expose services via <strong>Provided Interfaces (Ball / Lollipop notation)</strong> and consume services via <strong>Required Interfaces (Socket notation)</strong>.</p>
+<h3 id="51-interface-details">5.1 Interface Details</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Interface Name</th>
+<th style="text-align: left;">Provider (Ball)</th>
+<th style="text-align: left;">Consumer (Socket)</th>
+<th style="text-align: left;">Protocol / Mechanism</th>
+<th style="text-align: left;">Key Methods &amp; Signatures</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong><code>IPetSearchService</code></strong></td>
+<td style="text-align: left;"><code>Pet Catalog &amp; Search</code></td>
+<td style="text-align: left;"><code>Public Web Portal</code></td>
+<td style="text-align: left;">REST / JSON over HTTPS</td>
+<td style="text-align: left;"><code>searchPets(filterCriteria)</code><br><code>getPetProfile(petId)</code><br><code>getAvailableBreeds()</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>IQuestionnaireService</code></strong></td>
+<td style="text-align: left;"><code>Adoption &amp; Questionnaire Manager</code></td>
+<td style="text-align: left;"><code>Public Web Portal</code></td>
+<td style="text-align: left;">HTTPS POST / REST</td>
+<td style="text-align: left;"><code>submitQuestionnaire(data)</code><br><code>getApplicationStatus(appId)</code><br><code>updateApplicationStatus(appId, status)</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>IScreeningEngine</code></strong></td>
+<td style="text-align: left;"><code>Automated Screening Engine</code></td>
+<td style="text-align: left;"><code>Adoption &amp; Questionnaire Manager</code></td>
+<td style="text-align: left;">Synchronous RPC / Service Call</td>
+<td style="text-align: left;"><code>evaluateQuestionnaire(data)</code><br><code>validateHousingRules(housing, breed)</code><br><code>flagDisqualification(appId, reason)</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>IMedicalRecordService</code></strong></td>
+<td style="text-align: left;"><code>Medical Intake &amp; Vaccination</code></td>
+<td style="text-align: left;"><code>Shelter Staff &amp; Foster Portal</code></td>
+<td style="text-align: left;">REST over HTTPS (RBAC Auth)</td>
+<td style="text-align: left;"><code>logVaccination(animalId, vaccine)</code><br><code>getMedicalHistory(animalId)</code><br><code>updateAdoptionReadiness(animalId, flag)</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>IHealthClearance</code></strong></td>
+<td style="text-align: left;"><code>Medical Intake &amp; Vaccination</code></td>
+<td style="text-align: left;"><code>Adoption &amp; Questionnaire Manager</code></td>
+<td style="text-align: left;">Synchronous Service Call</td>
+<td style="text-align: left;"><code>verifyAdoptionReadiness(animalId)</code><br><code>getQuarantineStatus(animalId)</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>IFosterPlacementService</code></strong></td>
+<td style="text-align: left;"><code>Foster Placement &amp; Scheduler</code></td>
+<td style="text-align: left;"><code>Shelter Staff &amp; Foster Portal</code></td>
+<td style="text-align: left;">REST / JSON over HTTPS</td>
+<td style="text-align: left;"><code>scheduleFosterTimeline(placement)</code><br><code>validateNoOverlap(animalId, dates)</code><br><code>getUpcomingMilestones(caretakerId)</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>INotificationDispatch</code></strong></td>
+<td style="text-align: left;"><code>Notification Dispatcher</code></td>
+<td style="text-align: left;"><code>Foster Placement &amp; Scheduler</code>, <code>Adoption Manager</code></td>
+<td style="text-align: left;">Asynchronous Queue / Event</td>
+<td style="text-align: left;"><code>enqueueMilestoneReminder(alert)</code><br><code>sendApplicationConfirmation(email, appId)</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>ISMTPClient</code></strong></td>
+<td style="text-align: left;"><code>External Mail Gateway</code></td>
+<td style="text-align: left;"><code>Notification Dispatcher</code></td>
+<td style="text-align: left;">SMTP over TLS (Port 587)</td>
+<td style="text-align: left;"><code>dispatchEmail(recipient, subject, bodyHtml)</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>IShelterDataAccess</code></strong></td>
+<td style="text-align: left;"><code>Shelter Database &amp; Data Access</code></td>
+<td style="text-align: left;">All Business Components</td>
+<td style="text-align: left;">JDBC / JPA with AES-256 Engine</td>
+<td style="text-align: left;"><code>saveEncryptedEntity(entity)</code><br><code>findById(id, entityClass)</code><br><code>executeOptimizedQuery(query)</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-uml-component-diagram">6. UML Component Diagram</h2>
+<p>The following UML Component Diagram was authored in Draw.io and exported locally:</p>
+<p><img alt="UML Component Diagram" src="/home/andey/Documents/Sem5/SE/lab3/component_diagram.png" /></p>
+<ul>
+<li><strong>Vector Format (SVG)</strong>: <a href="component_diagram.svg">component_diagram.svg</a></li>
+<li><strong>Editable Draw.io Source</strong>: <a href="component_diagram.drawio">component_diagram.drawio</a></li>
+</ul>
+<hr />
+<h2 id="7-requirements-jira-backlog-traceability-matrix">7. Requirements &amp; Jira Backlog Traceability Matrix</h2>
+<p>This traceability matrix maps the architectural components and interfaces back to the Lab 1 requirements and Lab 2 Jira Agile backlog items, ensuring 100% architectural coverage.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Requirement ID</th>
+<th style="text-align: left;">Requirement Type</th>
+<th style="text-align: left;">Jira Story Key</th>
+<th style="text-align: left;">Implementing Component</th>
+<th style="text-align: left;">Interface Utilized</th>
+<th style="text-align: left;">Architectural Verification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>FR-001</strong></td>
+<td style="text-align: left;">Functional</td>
+<td style="text-align: left;"><code>SCRUM-8</code>, <code>SCRUM-9</code></td>
+<td style="text-align: left;"><code>Medical Intake &amp; Vaccination Component</code></td>
+<td style="text-align: left;"><code>IMedicalRecordService</code>, <code>IHealthClearance</code></td>
+<td style="text-align: left;">Verified through medical intake logging, quarantine status updates, and adoption readiness checks.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>FR-002</strong></td>
+<td style="text-align: left;">Functional</td>
+<td style="text-align: left;"><code>SCRUM-10</code></td>
+<td style="text-align: left;"><code>Adoption &amp; Questionnaire Manager Component</code></td>
+<td style="text-align: left;"><code>IQuestionnaireService</code></td>
+<td style="text-align: left;">Verified via online questionnaire submission endpoint, unique ID generation, and application status tracking.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>FR-003</strong></td>
+<td style="text-align: left;">Functional</td>
+<td style="text-align: left;"><code>SCRUM-11</code></td>
+<td style="text-align: left;"><code>Automated Screening Engine</code></td>
+<td style="text-align: left;"><code>IScreeningEngine</code></td>
+<td style="text-align: left;">Verified through automated policy evaluation rules executing within 5 seconds of questionnaire submission.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>FR-004</strong></td>
+<td style="text-align: left;">Functional</td>
+<td style="text-align: left;"><code>SCRUM-12</code></td>
+<td style="text-align: left;"><code>Foster Placement &amp; Scheduler Component</code></td>
+<td style="text-align: left;"><code>IFosterPlacementService</code></td>
+<td style="text-align: left;">Verified by timeline validation logic blocking overlapping foster dates for the same animal.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>FR-005</strong></td>
+<td style="text-align: left;">Functional</td>
+<td style="text-align: left;"><code>SCRUM-13</code></td>
+<td style="text-align: left;"><code>Notification Dispatcher Component</code></td>
+<td style="text-align: left;"><code>INotificationDispatch</code>, <code>ISMTPClient</code></td>
+<td style="text-align: left;">Verified via asynchronous milestone scheduler dispatching email alerts 48 hours prior to check-ins.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>NFR-001</strong></td>
+<td style="text-align: left;">Non-Functional</td>
+<td style="text-align: left;"><code>SCRUM-10</code></td>
+<td style="text-align: left;"><code>Pet Catalog &amp; Search Component</code></td>
+<td style="text-align: left;"><code>IPetSearchService</code></td>
+<td style="text-align: left;">Verified by in-memory caching layer returning catalog search results in &lt; 200 ms under 500 concurrent users.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>NFR-002</strong></td>
+<td style="text-align: left;">Non-Functional</td>
+<td style="text-align: left;"><code>SCRUM-8</code>, <code>SCRUM-10</code></td>
+<td style="text-align: left;"><code>Shelter Database &amp; Data Access Component</code></td>
+<td style="text-align: left;"><code>IShelterDataAccess</code></td>
+<td style="text-align: left;">Verified by transparent column-level AES-256 database encryption for applicant questionnaires and medical records.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-conclusion-architectural-reflection">8. Conclusion &amp; Architectural Reflection</h2>
+<p>By selecting the <strong>Layered (3-Tier) Architectural Pattern</strong>, the Pet Adoption and Shelter Management System achieves an optimal balance between <strong>modularity</strong>, <strong>operational simplicity</strong>, <strong>data consistency</strong>, and <strong>stringent security</strong>.</p>
+<h3 id="key-architectural-takeaways">Key Architectural Takeaways</h3>
+<ol>
+<li>
+<p><strong>Coupling vs. Cohesion</strong>: Decomposing the system into 7 focused components ensures high cohesion within domain modules while maintaining loose coupling through explicit ball-and-socket interfaces.</p>
+</li>
+<li>
+<p><strong>Security by Design</strong>: Isolating encryption logic within the Data Access Layer guarantees that AES-256 encryption at rest (NFR-002) is applied consistently across all data access pathways.</p>
+</li>
+<li>
+<p><strong>Targeted Performance Optimization</strong>: Incorporating caching within the Pet Catalog component allows the system to comfortably meet the sub-200ms response time requirement (NFR-001) without introducing distributed caching synchronization complexities.</p>
+</li>
+</ol>
+</body>
+</html>

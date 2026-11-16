@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 720" width="100%" height="100%" style="background-color: #ffffff; font-family: Arial, sans-serif;">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#333333" />
+    </marker>
+    <marker id="open-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5" fill="none" stroke="#555555" stroke-width="1.5" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="475" y="32" text-anchor="middle" font-size="18" font-weight="bold" fill="#1e293b">UML Use-Case Diagram: Pet Adoption and Shelter Management System</text>
+
+  <!-- System Boundary -->
+  <rect x="230" y="55" width="490" height="640" rx="8" ry="8" fill="#f8fafc" stroke="#3b82f6" stroke-width="2" />
+  <text x="250" y="80" font-size="14" font-weight="bold" fill="#1d4ed8">Pet Adoption and Shelter Management System</text>
+
+  <!-- ACTOR 1: Adoption Applicant (Left Top) -->
+  <!-- Stick figure -->
+  <circle cx="100" cy="200" r="14" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+  <line x1="100" y1="214" x2="100" y2="250" stroke="#0284c7" stroke-width="2"/>
+  <line x1="75" y1="228" x2="125" y2="228" stroke="#0284c7" stroke-width="2"/>
+  <line x1="100" y1="250" x2="80" y2="285" stroke="#0284c7" stroke-width="2"/>
+  <line x1="100" y1="250" x2="120" y2="285" stroke="#0284c7" stroke-width="2"/>
+  <text x="100" y="305" text-anchor="middle" font-size="13" font-weight="bold" fill="#0f172a">Adoption Applicant</text>
+
+  <!-- ACTOR 2: Shelter Staff (Right Middle) -->
+  <!-- Stick figure -->
+  <circle cx="850" cy="330" r="14" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <line x1="850" y1="344" x2="850" y2="380" stroke="#d97706" stroke-width="2"/>
+  <line x1="825" y1="358" x2="875" y2="358" stroke="#d97706" stroke-width="2"/>
+  <line x1="850" y1="380" x2="830" y2="415" stroke="#d97706" stroke-width="2"/>
+  <line x1="850" y1="380" x2="870" y2="415" stroke="#d97706" stroke-width="2"/>
+  <text x="850" y="435" text-anchor="middle" font-size="13" font-weight="bold" fill="#0f172a">Shelter Staff</text>
+
+  <!-- ACTOR 3: Foster Caretaker (Left Bottom) -->
+  <!-- Stick figure -->
+  <circle cx="100" cy="520" r="14" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <line x1="100" y1="534" x2="100" y2="570" stroke="#16a34a" stroke-width="2"/>
+  <line x1="75" y1="548" x2="125" y2="548" stroke="#16a34a" stroke-width="2"/>
+  <line x1="100" y1="570" x2="80" y2="605" stroke="#16a34a" stroke-width="2"/>
+  <line x1="100" y1="570" x2="120" y2="605" stroke="#16a34a" stroke-width="2"/>
+  <text x="100" y="625" text-anchor="middle" font-size="13" font-weight="bold" fill="#0f172a">Foster Caretaker</text>
+
+  <!-- USE CASES -->
+  <!-- UC-01: Log Medical Intake -->
+  <ellipse cx="475" cy="120" rx="110" ry="24" fill="#ffffff" stroke="#2563eb" stroke-width="1.8"/>
+  <text x="475" y="124" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e293b">UC-01: Log Medical Intake</text>
+
+  <!-- UC-02: Submit Adoption Questionnaire -->
+  <ellipse cx="475" cy="200" rx="130" ry="26" fill="#ffffff" stroke="#2563eb" stroke-width="1.8"/>
+  <text x="475" y="204" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e293b">UC-02: Submit Adoption Questionnaire</text>
+
+  <!-- UC-03: Screen Questionnaire -->
+  <ellipse cx="475" cy="290" rx="115" ry="25" fill="#ffffff" stroke="#2563eb" stroke-width="1.8"/>
+  <text x="475" y="294" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e293b">UC-03: Screen Questionnaire</text>
+
+  <!-- UC-06: Verify Applicant Background (included) -->
+  <ellipse cx="360" cy="390" rx="110" ry="24" fill="#ffffff" stroke="#64748b" stroke-width="1.6"/>
+  <text x="360" y="394" text-anchor="middle" font-size="11" font-weight="bold" fill="#334155">UC-06: Verify Background</text>
+
+  <!-- UC-07: Request Home Visit (extended) -->
+  <ellipse cx="600" cy="390" rx="100" ry="24" fill="#ffffff" stroke="#64748b" stroke-width="1.6"/>
+  <text x="600" y="394" text-anchor="middle" font-size="11" font-weight="bold" fill="#334155">UC-07: Request Home Visit</text>
+
+  <!-- UC-04: Manage Foster Placement -->
+  <ellipse cx="475" cy="490" rx="125" ry="25" fill="#ffffff" stroke="#2563eb" stroke-width="1.8"/>
+  <text x="475" y="494" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e293b">UC-04: Manage Foster Placement</text>
+
+  <!-- UC-05: Update Placement Milestones -->
+  <ellipse cx="475" cy="580" rx="130" ry="25" fill="#ffffff" stroke="#2563eb" stroke-width="1.8"/>
+  <text x="475" y="584" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e293b">UC-05: Update Placement Milestones</text>
+
+  <!-- UC-08: Search Pet Catalog -->
+  <ellipse cx="475" cy="655" rx="110" ry="22" fill="#ffffff" stroke="#2563eb" stroke-width="1.8"/>
+  <text x="475" y="659" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e293b">UC-08: Search Pet Catalog</text>
+
+  <!-- ASSOCIATIONS (Solid lines) -->
+  <!-- Applicant -> UC-08 -->
+  <line x1="140" y1="240" x2="375" y2="645" stroke="#334155" stroke-width="1.5"/>
+  <!-- Applicant -> UC-02 -->
+  <line x1="155" y1="230" x2="350" y2="205" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Shelter Staff -> UC-01 -->
+  <line x1="810" y1="345" x2="580" y2="130" stroke="#334155" stroke-width="1.5"/>
+  <!-- Shelter Staff -> UC-03 -->
+  <line x1="810" y1="365" x2="585" y2="300" stroke="#334155" stroke-width="1.5"/>
+  <!-- Shelter Staff -> UC-04 -->
+  <line x1="810" y1="385" x2="590" y2="480" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Foster Caretaker -> UC-05 -->
+  <line x1="155" y1="565" x2="350" y2="580" stroke="#334155" stroke-width="1.5"/>
+  <!-- Foster Caretaker -> UC-04 -->
+  <line x1="150" y1="545" x2="365" y2="500" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- STEREOTYPE RELATIONSHIPS (Dashed lines with open arrows) -->
+  <!-- UC-03 includes UC-06 -->
+  <line x1="435" y1="312" x2="385" y2="368" stroke="#475569" stroke-width="1.5" stroke-dasharray="5,5" marker-end="url(#open-arrow)"/>
+  <text x="365" y="335" font-size="10" font-weight="bold" fill="#0f172a">&lt;&lt;include&gt;&gt;</text>
+
+  <!-- UC-07 extends UC-03 -->
+  <line x1="565" y1="368" x2="515" y2="312" stroke="#475569" stroke-width="1.5" stroke-dasharray="5,5" marker-end="url(#open-arrow)"/>
+  <text x="560" y="335" font-size="10" font-weight="bold" fill="#0f172a">&lt;&lt;extend&gt;&gt;</text>
+
+  <!-- Legend Box -->
+  <rect x="20" y="635" width="190" height="70" rx="4" ry="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="30" y="652" font-size="11" font-weight="bold" fill="#334155">Legend</text>
+  <line x1="30" y1="668" x2="70" y2="668" stroke="#334155" stroke-width="1.5"/>
+  <text x="78" y="672" font-size="10" fill="#475569">Association</text>
+  <line x1="30" y1="690" x2="70" y2="690" stroke="#475569" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#open-arrow)"/>
+  <text x="78" y="694" font-size="10" fill="#475569">&lt;&lt;include&gt;&gt; / &lt;&lt;extend&gt;&gt;</text>
+</svg>

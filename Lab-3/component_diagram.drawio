@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="drawio" version="26.0.0">
+  <diagram name="Component-Diagram-Lab3" id="lab3-comp-diag">
+    <mxGraphModel dx="1200" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1020" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ==================== 1. LAYER BOUNDARIES (Monochrome Dashed Boxes) ==================== -->
+        <mxCell id="box_pres" value="&lt;b&gt;Presentation Layer (Client Tier)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=3;verticalAlign=top;align=left;spacingLeft=15;spacingTop=10;fontStyle=1;fontSize=12;dashed=1;strokeWidth=1.5;fillColor=none;strokeColor=#000000;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="1120" height="130" as="geometry" />
+        </mxCell>
+
+        <mxCell id="box_biz" value="&lt;b&gt;Business Logic Layer (Application Tier - Layered Architecture Pattern)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=3;verticalAlign=top;align=left;spacingLeft=15;spacingTop=10;fontStyle=1;fontSize=12;dashed=1;strokeWidth=1.5;fillColor=none;strokeColor=#000000;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="40" y="210" width="1120" height="490" as="geometry" />
+        </mxCell>
+
+        <mxCell id="box_data" value="&lt;b&gt;Data Access &amp;amp; Persistence Layer (Database Tier)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=3;verticalAlign=top;align=left;spacingLeft=15;spacingTop=10;fontStyle=1;fontSize=12;dashed=1;strokeWidth=1.5;fillColor=none;strokeColor=#000000;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="40" y="740" width="1120" height="240" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== 2. PRESENTATION COMPONENTS ==================== -->
+        <!-- Public Web Portal (Center X = 190) -->
+        <mxCell id="c_ui_applicant" value="&amp;laquo;component&amp;raquo;&lt;br&gt;&lt;b&gt;Public Web Portal&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;[Adoption Applicant UI]&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;strokeWidth=1.5;fontSize=11;align=center;verticalAlign=middle;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="70" y="70" width="240" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- Shelter Staff Portal (Center X = 770) -->
+        <mxCell id="c_ui_staff" value="&amp;laquo;component&amp;raquo;&lt;br&gt;&lt;b&gt;Shelter Staff &amp;amp; Foster Portal&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;[Shelter Operations &amp;amp; Intake UI]&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;strokeWidth=1.5;fontSize=11;align=center;verticalAlign=middle;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="630" y="70" width="280" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- External Mail Gateway (Center X = 1045) -->
+        <mxCell id="c_ext_email" value="&amp;laquo;component&amp;raquo;&lt;br&gt;&lt;b&gt;External Mail Gateway&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;[SMTP / Cloud Email Service]&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;strokeWidth=1.5;fontSize=11;align=center;verticalAlign=middle;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="960" y="70" width="170" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== 3. BUSINESS LOGIC COMPONENTS ==================== -->
+        <!-- Row 1 Business Components -->
+        <!-- Pet Catalog (Center X = 190) -->
+        <mxCell id="c_catalog" value="&amp;laquo;component&amp;raquo;&lt;br&gt;&lt;b&gt;Pet Catalog &amp;amp; Search&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;[In-Memory Cache &amp;amp; Filter]&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;strokeWidth=1.5;fontSize=11;align=center;verticalAlign=middle;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="70" y="260" width="240" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- Adoption Manager (Center X = 480) -->
+        <mxCell id="c_adoption" value="&amp;laquo;component&amp;raquo;&lt;br&gt;&lt;b&gt;Adoption &amp;amp; Questionnaire Manager&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;[Application Workflow &amp;amp; State]&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;strokeWidth=1.5;fontSize=10.5;align=center;verticalAlign=middle;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="360" y="260" width="240" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- Medical Intake (Center X = 760) (Width 220 so right edge is 870) -->
+        <mxCell id="c_medical" value="&amp;laquo;component&amp;raquo;&lt;br&gt;&lt;b&gt;Medical Intake &amp;amp; Vaccination&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;[Health History &amp;amp; Quarantine]&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;strokeWidth=1.5;fontSize=10.5;align=center;verticalAlign=middle;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="650" y="260" width="220" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- Row 2 Business Components -->
+        <!-- Screening Engine (Center X = 480) -->
+        <mxCell id="c_screening" value="&amp;laquo;component&amp;raquo;&lt;br&gt;&lt;b&gt;Automated Screening Engine&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;[Rules Engine &amp;amp; Policy Checker]&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;strokeWidth=1.5;fontSize=11;align=center;verticalAlign=middle;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="360" y="490" width="240" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- Foster Placement (Center X = 760) -->
+        <mxCell id="c_foster" value="&amp;laquo;component&amp;raquo;&lt;br&gt;&lt;b&gt;Foster Placement &amp;amp; Scheduler&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;[Placement Timeline &amp;amp; Validation]&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;strokeWidth=1.5;fontSize=11;align=center;verticalAlign=middle;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="650" y="490" width="220" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- Notification Dispatcher (Center X = 1045) -->
+        <mxCell id="c_notification" value="&amp;laquo;component&amp;raquo;&lt;br&gt;&lt;b&gt;Notification Dispatcher&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;[Milestone Alert Engine]&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;strokeWidth=1.5;fontSize=11;align=center;verticalAlign=middle;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="960" y="375" width="170" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== 4. DATA ACCESS LAYER COMPONENT ==================== -->
+        <mxCell id="c_db_access" value="&amp;laquo;component&amp;raquo;&lt;br&gt;&lt;b&gt;Shelter Database &amp;amp; Data Access Component&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;[Central Relational Repository | ORM Mapping | AES-256 Encrypted Column Storage]&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;strokeWidth=1.5;fontSize=11;align=center;verticalAlign=middle;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="200" y="875" width="800" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== 5. INTERFACES (BALL & SOCKET NOTATION) ==================== -->
+
+        <!-- Interface 1: IPetSearchService (Public Web Portal -> Pet Catalog) -->
+        <mxCell id="sock_1" value="" style="shape=requiredInterface;html=1;verticalLabelPosition=bottom;strokeColor=#000000;strokeWidth=2;fillColor=none;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="178" y="185" width="24" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="line_sock_1" style="edgeStyle=none;html=1;endArrow=none;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="190" y="135" as="sourcePoint" />
+            <mxPoint x="190" y="185" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ball_1" value="" style="shape=ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="182" y="192" width="16" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="line_ball_1" style="edgeStyle=none;html=1;endArrow=none;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="190" y="208" as="sourcePoint" />
+            <mxPoint x="190" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lbl_1" value="&lt;b&gt;IPetSearchService&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;REST / JSON over HTTPS (&amp;lt; 200ms)&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="210" y="180" width="170" height="30" as="geometry" />
+        </mxCell>
+
+
+        <!-- Interface 2: IQuestionnaireService (Public Web Portal -> Adoption Manager) -->
+        <mxCell id="sock_2" value="" style="shape=requiredInterface;html=1;verticalLabelPosition=bottom;strokeColor=#000000;strokeWidth=2;fillColor=none;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="398" y="185" width="24" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="line_sock_2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="280" y="135" as="sourcePoint" />
+            <mxPoint x="410" y="185" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="280" y="160" />
+              <mxPoint x="410" y="160" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ball_2" value="" style="shape=ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="402" y="192" width="16" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="line_ball_2" style="edgeStyle=none;html=1;endArrow=none;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="410" y="208" as="sourcePoint" />
+            <mxPoint x="410" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lbl_2" value="&lt;b&gt;IQuestionnaireService&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;HTTPS POST / Form Submission&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="430" y="180" width="170" height="30" as="geometry" />
+        </mxCell>
+
+
+        <!-- Interface 3: IMedicalRecordService (Shelter Staff Portal -> Medical Intake) -->
+        <mxCell id="sock_3" value="" style="shape=requiredInterface;html=1;verticalLabelPosition=bottom;strokeColor=#000000;strokeWidth=2;fillColor=none;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="728" y="185" width="24" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="line_sock_3" style="edgeStyle=none;html=1;endArrow=none;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="740" y="135" as="sourcePoint" />
+            <mxPoint x="740" y="185" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ball_3" value="" style="shape=ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="732" y="192" width="16" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="line_ball_3" style="edgeStyle=none;html=1;endArrow=none;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="740" y="208" as="sourcePoint" />
+            <mxPoint x="740" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lbl_3" value="&lt;b&gt;IMedicalRecordService&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;REST API with RBAC Auth&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="760" y="180" width="150" height="30" as="geometry" />
+        </mxCell>
+
+
+        <!-- Interface 4: IFosterPlacementService (Shelter Staff Portal -> Foster Placement) -->
+        <mxCell id="sock_4" value="" style="shape=requiredInterface;html=1;verticalLabelPosition=bottom;strokeColor=#000000;strokeWidth=2;fillColor=none;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="888" y="185" width="24" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="line_sock_4" style="edgeStyle=none;html=1;endArrow=none;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="900" y="135" as="sourcePoint" />
+            <mxPoint x="900" y="185" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ball_4" value="" style="shape=ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="892" y="192" width="16" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="line_ball_4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="900" y="208" as="sourcePoint" />
+            <mxPoint x="870" y="525" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="900" y="525" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lbl_4" value="&lt;b&gt;IFosterPlacementService&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;REST / Schedule Sync&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="920" y="180" width="130" height="30" as="geometry" />
+        </mxCell>
+
+
+        <!-- Interface 5: IScreeningEvaluationService (Adoption Manager -> Screening Engine) -->
+        <mxCell id="sock_5" value="" style="shape=requiredInterface;html=1;verticalLabelPosition=bottom;strokeColor=#000000;strokeWidth=2;fillColor=none;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="468" y="405" width="24" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="line_sock_5" style="edgeStyle=none;html=1;endArrow=none;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="480" y="335" as="sourcePoint" />
+            <mxPoint x="480" y="405" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ball_5" value="" style="shape=ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="472" y="412" width="16" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="line_ball_5" style="edgeStyle=none;html=1;endArrow=none;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="480" y="428" as="sourcePoint" />
+            <mxPoint x="480" y="490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lbl_5" value="&lt;b&gt;IScreeningEvaluationService&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;Internal Rules Invocation (&amp;lt; 5s)&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="500" y="400" width="160" height="30" as="geometry" />
+        </mxCell>
+
+
+        <!-- Interface 6: IHealthClearanceService (Adoption Manager -> Medical Intake) -->
+        <mxCell id="sock_6" value="" style="shape=requiredInterface;html=1;verticalLabelPosition=bottom;strokeColor=#000000;strokeWidth=2;fillColor=none;direction=east;" vertex="1" parent="1">
+          <mxGeometry x="618" y="290" width="14" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="line_sock_6" style="edgeStyle=none;html=1;endArrow=none;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="600" y="302" as="sourcePoint" />
+            <mxPoint x="618" y="302" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ball_6" value="" style="shape=ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="625" y="294" width="16" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="line_ball_6" style="edgeStyle=none;html=1;endArrow=none;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="641" y="302" as="sourcePoint" />
+            <mxPoint x="650" y="302" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lbl_6" value="&lt;b&gt;IHealthClearanceService&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;Quarantine Clearance Check&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="545" y="340" width="160" height="30" as="geometry" />
+        </mxCell>
+
+
+        <!-- Interface 7: INotificationAlertService (Foster Scheduler -> Notification Dispatcher) -->
+        <mxCell id="sock_7" value="" style="shape=requiredInterface;html=1;verticalLabelPosition=bottom;strokeColor=#000000;strokeWidth=2;fillColor=none;direction=east;" vertex="1" parent="1">
+          <mxGeometry x="938" y="410" width="14" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="line_sock_7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="870" y="540" as="sourcePoint" />
+            <mxPoint x="938" y="422" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="920" y="540" />
+              <mxPoint x="920" y="422" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ball_7" value="" style="shape=ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="945" y="414" width="16" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="line_ball_7" style="edgeStyle=none;html=1;endArrow=none;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="961" y="422" as="sourcePoint" />
+            <mxPoint x="960" y="422" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lbl_7" value="&lt;b&gt;INotificationAlertService&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;48h Milestone Alerts / Events&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="780" y="410" width="150" height="30" as="geometry" />
+        </mxCell>
+
+
+        <!-- Interface 8: IEmailNotificationService (Notification Dispatcher -> External Mail Gateway) -->
+        <mxCell id="ball_8" value="" style="shape=ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1037" y="210" width="16" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="line_ball_8" style="edgeStyle=none;html=1;endArrow=none;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1045" y="135" as="sourcePoint" />
+            <mxPoint x="1045" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sock_8" value="" style="shape=requiredInterface;html=1;verticalLabelPosition=bottom;strokeColor=#000000;strokeWidth=2;fillColor=none;direction=north;" vertex="1" parent="1">
+          <mxGeometry x="1033" y="218" width="24" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="line_sock_8" style="edgeStyle=none;html=1;endArrow=none;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1045" y="232" as="sourcePoint" />
+            <mxPoint x="1045" y="375" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="lbl_8" value="&lt;b&gt;IEmailNotificationService&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;SMTP / TLS Gateway&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1065" y="205" width="140" height="30" as="geometry" />
+        </mxCell>
+
+
+        <!-- ==================== 6. DATA ACCESS INTERFACE (IDatabaseQueryService) ==================== -->
+        <!-- Bus Line across middle above DB -->
+        <mxCell id="db_bus" style="edgeStyle=none;html=1;endArrow=none;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="190" y="805" as="sourcePoint" />
+            <mxPoint x="760" y="805" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Sockets from Business Tier -->
+        <!-- From Catalog -->
+        <mxCell id="sock_db_1" value="" style="shape=requiredInterface;html=1;verticalLabelPosition=bottom;strokeColor=#000000;strokeWidth=2;fillColor=none;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="178" y="791" width="24" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="line_sock_db_1" style="edgeStyle=none;html=1;endArrow=none;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="190" y="335" as="sourcePoint" />
+            <mxPoint x="190" y="791" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- From Screening -->
+        <mxCell id="sock_db_2" value="" style="shape=requiredInterface;html=1;verticalLabelPosition=bottom;strokeColor=#000000;strokeWidth=2;fillColor=none;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="468" y="791" width="24" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="line_sock_db_2" style="edgeStyle=none;html=1;endArrow=none;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="480" y="565" as="sourcePoint" />
+            <mxPoint x="480" y="791" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- From Foster -->
+        <mxCell id="sock_db_3" value="" style="shape=requiredInterface;html=1;verticalLabelPosition=bottom;strokeColor=#000000;strokeWidth=2;fillColor=none;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="748" y="791" width="24" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="line_sock_db_3" style="edgeStyle=none;html=1;endArrow=none;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="760" y="565" as="sourcePoint" />
+            <mxPoint x="760" y="791" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Central Ball on Shelter Database Component -->
+        <mxCell id="ball_db" value="" style="shape=ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="592" y="805" width="16" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="line_ball_db" style="edgeStyle=none;html=1;endArrow=none;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="600" y="821" as="sourcePoint" />
+            <mxPoint x="600" y="875" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Label DB -->
+        <mxCell id="lbl_db" value="&lt;b&gt;IDatabaseQueryService&lt;/b&gt; [Encrypted TCP / SQL ORM Mapping | AES-256 Column Encryption at Rest]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="270" y="830" width="550" height="25" as="geometry" />
+        </mxCell>
+
+
+        <!-- ==================== 7. NOTATION LEGEND BOX ==================== -->
+        <mxCell id="legend_box" value="&lt;b&gt;UML 2.5 Notation Legend&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=4;verticalAlign=top;align=left;spacingLeft=10;spacingTop=6;fontStyle=1;fontSize=10;strokeWidth=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="50" y="885" width="220" height="55" as="geometry" />
+        </mxCell>
+        <!-- Legend Ball -->
+        <mxCell id="leg_ball" value="" style="shape=ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="60" y="912" width="12" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_lbl1" value="Provided (Ball)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=9;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="76" y="910" width="75" height="15" as="geometry" />
+        </mxCell>
+        <!-- Legend Socket -->
+        <mxCell id="leg_sock" value="" style="shape=requiredInterface;html=1;verticalLabelPosition=bottom;strokeColor=#000000;strokeWidth=1.5;fillColor=none;direction=south;" vertex="1" parent="1">
+          <mxGeometry x="150" y="908" width="16" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_lbl2" value="Required (Socket)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=9;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="168" y="910" width="85" height="15" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
